@@ -15,6 +15,7 @@ class User(Base):
     user_name = Column(String(250), nullable=False)
     name = Column(String(250), nullable=False)
     last_name = Column(String(250), nullable=False)
+    password = Column(String(250), nullable=True)
     email = Column(String(250), nullable=False)
 
 class Post(Base):
@@ -32,6 +33,8 @@ class Comment(Base):
     id = Column(Integer, primary_key=True)
     post_id = Column(Integer, ForeignKey('post.id'))  
     post = relationship(Post)
+    user_id = Column(Integer, ForeignKey('user.id'))  
+    user = relationship(User) 
 
 
 class Media(Base):
